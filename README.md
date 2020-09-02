@@ -1,62 +1,29 @@
-those are the steps for creating this project 
+those are the steps to launch the project
+- clone the project using git
+- open the project and run this command in the terminal ( Composer install )
+- create a database in Mysql 
+- change  the .env-example file name to .env and add the database  name that you just created 
+for example 
 
-- started by creating a new laravel project 
-
-- created sperated folders for each model 'Api/V1 , customer , admin , issue '
-
-- created a new logincontroller inside the Api folder 
-
-- installed  Passport via the Composer package manager:
-composer require laravel/passport
-
-- added a new column to the user table named rool with a default value of 'customer'
-and migrated the database 
-php artisan migrate
-
-- i runed the php artisan passport:install command to create the encryption keys needed to generate secure access tokens.
-
-- added the Laravel\Passport\HasApiTokens trait to the App\User model
-
-- called the Passport::routes method within the boot method of the AuthServiceProvider
-
-- in the config/auth.php configuration file, i sat the driver option of the api authentication guard to passport
-
-- i created an api folder in the routes and placed the api routes inside it to make it more clear
-and updated the path in the routesServiceProvider 
-
-- i worked with Personal Access Client bcs it fit this project from my prespective and  serve as a simpler approach to issuing access tokens in general
-
-- defined  the API's scopes using the Passport::tokensCan method in the boot method of the AuthServiceProvider
-
-- added the following middleware to the $routeMiddleware property the your app/Http/Kernel.php file:
-'scopes' => \Laravel\Passport\Http\Middleware\CheckScopes::class,
-'scope' => \Laravel\Passport\Http\Middleware\CheckForAnyScope::class,
-
-- then i created the login method using passport tokens and scope 
-
-- i used the repositories design pattern to reuse the code in the api controller and in diffrent controllers 
-in the future if needed 
-
-- created repositories into the customer and admin folders
-
-- generated a new issue model with it migration and setup the relationsship between the user and the issues
-and setup the fillable columns 
-
-- i created a costume Request files to manage the requests in the issue folder
-and added the required inputs in the rules method 
-
-- created policies for the admin and customer to add more security and controle
-
-- created the methods we need to manage the issues inside the customer and admin repositories
-
-- and added two controllers in the api folder one to manage the admin requests and the other for the customer
-
-- i managed the mails to the user when he create an issue and when the admin updated 
-usign laravel notifications
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=pixelperfect
+DB_USERNAME=root
+DB_PASSWORD=
 
 
-- finnaly i created the routes responssible for the Api requests.
+- now run this command ( php artisan migrate )
+- bcs we dont have a register method in the api you can access you database and add a new user to the user table 
+- you can use those for example
 
+name : PixelPerfect 
+email : PixelPerfect@test.com
+rool : customer 
+password : $2y$12$j3GKXSb8PacEJMasPWMhMuqWSEQ3FfU1sDWjrKSvRogR5HJvMlUVq    ( this password is equal to 123 ) 
 
-i hope this a good approach and scalable enough.
+the password always need to be hashed you can use this site to do that  https://bcrypt-generator.com/
 
+- the last step in the backend is to start the project with this command ( php artisan serve  )
+
+Go to the frontend repository 
