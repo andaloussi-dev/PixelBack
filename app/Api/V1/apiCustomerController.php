@@ -39,4 +39,11 @@ class apiCustomerController extends Controller
         return $issue;
     }
 
+    public function destroy($id)
+    {
+        $issue = $this->CustomerRepository->show($id);
+        $this->authorize('destroy',$issue);
+        $this->CustomerRepository->delete($id);
+    }
+
 }

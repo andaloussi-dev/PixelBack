@@ -24,6 +24,7 @@ Route::group(['prefix'=>'/customer'],function(){
     Route::get('/issues','apiCustomerController@index');
     Route::post('/create','apiCustomerController@create');
     Route::get('/issue/{id}','apiCustomerController@show');
+    Route::delete('/issue/{id}','apiCustomerController@destroy');
 
     });
       

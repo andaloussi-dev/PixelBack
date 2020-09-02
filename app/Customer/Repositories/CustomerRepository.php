@@ -20,4 +20,8 @@ class CustomerRepository {
         return Issue::find($id) ?? null;
     }
     
+    public function delete($id){
+        $issue=Issue::find($id);
+        $issue->delete();
+    }
 }

@@ -34,4 +34,10 @@ class IssuePolicy
     {
         return $user->id == $issue->user->id;
     }
+
+    public function destroy(User $user,Issue $issue)
+    {
+        return $user->id == $issue->user->id;
+    }
+
 }
